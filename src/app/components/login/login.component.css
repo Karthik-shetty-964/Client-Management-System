@@ -1,0 +1,7 @@
+.card {
+    background-color: var(--secondary);
+    color : var(--text-primary);
+    -webkit-box-shadow: 2px 2px 13px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 2px 2px 13px 0px rgba(112,112,112,1);
+    box-shadow: 2px 2px 13px 0px rgba(112,112,112,1);
+}

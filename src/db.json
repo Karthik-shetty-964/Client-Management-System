@@ -1,0 +1,255 @@
+{
+  "Client": [
+    {
+      "id": "1",
+      "name": "Axis Bank",
+      "location": "Bangalore",
+      "phone": "8956234558",
+      "email": "axisbank@gmail.com",
+      "password": "axisbank123"
+    },
+    {
+      "id": "2",
+      "name": "IRCTC",
+      "location": "Delhi",
+      "phone": "7889655423",
+      "email": "irctc@gmail.com",
+      "password": "irctc123"
+    },
+    {
+      "id": "3",
+      "name": "Boeing Airline",
+      "location": "Mumbai",
+      "phone": "8956231445",
+      "email": "boeing@gmail.com",
+      "password": "@boeing123"
+    },
+    {
+      "id": "4",
+      "name": "Keerthan",
+      "location": "Pune",
+      "phone": "7896548965",
+      "email": "keerthan@gmail.com",
+      "password": "keerthan123"
+    },
+    {
+      "id": "5",
+      "name": "Muneez",
+      "location": "Dubai",
+      "phone": "8695356878",
+      "email": "muneez@gmail.com",
+      "password": "munna123"
+    },
+    {
+      "id": "6",
+      "name": "Siddiq",
+      "location": "Udupi",
+      "phone": "7898658965",
+      "email": "siddiq@gmail.com",
+      "password": "siddiq123"
+    },
+    {
+      "id": "7",
+      "name": "Karthik",
+      "location": "Udupi",
+      "phone": "9964300358",
+      "email": "karthik@gmail.com",
+      "password": "karthik123"
+    }
+  ],
+  "Project": [
+    {
+      "id": "1",
+      "projectName": "Online Payment App",
+      "startDate": "2024-02-10",
+      "duration": 6,
+      "clientId": "1"
+    },
+    {
+      "id": "2",
+      "projectName": "Online ticket booking",
+      "startDate": "2024-02-14",
+      "duration": 8,
+      "clientId": "2"
+    },
+    {
+      "id": "3",
+      "projectName": "Axis bank website",
+      "startDate": "2024-02-16",
+      "duration": 5,
+      "clientId": "1"
+    },
+    {
+      "id": "4",
+      "projectName": "Boeing Website",
+      "startDate": "2024-02-15",
+      "duration": 4,
+      "clientId": "3"
+    },
+    {
+      "id": "5",
+      "projectName": "Hotel Website",
+      "startDate": "2024-02-22",
+      "duration": 2,
+      "clientId": "4"
+    },
+    {
+      "id": "6",
+      "projectName": "Personal portfolio",
+      "startDate": "2024-02-26",
+      "duration": 3,
+      "clientId": "5"
+    }
+  ],
+  "ProjectTasks": [
+    {
+      "id": "1",
+      "taskName": "Login module",
+      "taskDescription": "Client should be able to login after account verfication with axis bank",
+      "status": "In Progress",
+      "projectId": "1"
+    },
+    {
+      "id": "2",
+      "taskName": "Dashboard",
+      "taskDescription": "Show different options to user like account details, passbook history check option etc",
+      "status": "In Progress",
+      "projectId": "1"
+    },
+    {
+      "id": "3",
+      "taskName": "UPI key ",
+      "taskDescription": "Should be able to make payment through UPI key",
+      "status": "Todo",
+      "projectId": "1"
+    },
+    {
+      "id": "4",
+      "taskName": "Credit card",
+      "taskDescription": "Should have option to apply for credit card through portal",
+      "status": "Todo",
+      "projectId": "1"
+    },
+    {
+      "id": "1",
+      "taskName": "Login module",
+      "taskDescription": "Proper authentication system to verify user and provide access to the portal",
+      "status": "Todo",
+      "projectId": "2"
+    },
+    {
+      "id": "2",
+      "taskName": "Home page",
+      "taskDescription": "Should be able to book train tickets through the portal 24/7",
+      "status": "Todo",
+      "projectId": "2"
+    },
+    {
+      "id": "3",
+      "taskName": "Ticket cancellation",
+      "taskDescription": "Should be able to cancel booked tickets but the charges must be deducted",
+      "status": "Todo",
+      "projectId": "2"
+    },
+    {
+      "id": "1",
+      "taskName": "Login module",
+      "taskDescription": "Proper authentication system to verify user and provide access to the portal",
+      "status": "Todo",
+      "projectId": "3"
+    },
+    {
+      "id": "2",
+      "taskName": "Ticket tracking",
+      "taskDescription": "Should be able to track tickets through the website",
+      "status": "Todo",
+      "projectId": "3"
+    },
+    {
+      "id": "1",
+      "taskName": "Login module",
+      "taskDescription": "Proper authentication and authorization system",
+      "status": "Todo",
+      "projectId": "4"
+    },
+    {
+      "id": "1",
+      "taskName": "Online order",
+      "taskDescription": "Online ordering capability must be provided",
+      "status": "Todo",
+      "projectId": "5"
+    },
+    {
+      "id": "1",
+      "taskName": "Dashboard",
+      "taskDescription": "Showcase all works and expereince of the individual",
+      "status": "Todo",
+      "projectId": "6"
+    }
+  ],
+  "Client_Meetings": [
+    {
+      "id": "1",
+      "meetingTopic": "Requirement discussion",
+      "startDate": "2024-02-09T07:50:27.225Z",
+      "meetingUrl": "https://teams.com",
+      "clientId": "1",
+      "status": "Closed"
+    },
+    {
+      "id": "2",
+      "meetingTopic": "Project scope discussion",
+      "startDate": "2024-02-09T07:50:51.397Z",
+      "meetingUrl": "https://zoom.us",
+      "clientId": "2",
+      "status": "Closed"
+    },
+    {
+      "id": "3",
+      "meetingTopic": "Design verification",
+      "startDate": "Fri Feb 20 2024 13:21:32 GMT+0530 (India Standard Time)",
+      "meetingUrl": "https://teams.com",
+      "clientId": "1",
+      "status": "Open"
+    },
+    {
+      "id": "4",
+      "meetingTopic": "Module confirmation",
+      "startDate": "Fri Feb 25 2024 13:22:27 GMT+0530 (India Standard Time)",
+      "meetingUrl": "https://zoom.us",
+      "clientId": "2",
+      "status": "Open"
+    },
+    {
+      "id": "5",
+      "meetingTopic": "Airline detail meeting",
+      "startDate": "2024-02-16T00:25",
+      "meetingUrl": "https://teams.com",
+      "clientId": "3",
+      "status": "Open"
+    },
+    {
+      "id": "4",
+      "meetingTopic": "Requirement gathering",
+      "startDate": "2024-02-29T17:37",
+      "meetingUrl": "https://zoom.us",
+      "clientId": "4",
+      "status": "Open"
+    },
+    {
+      "id": "5",
+      "meetingTopic": "Design discussion",
+      "startDate": "2024-02-16T15:38",
+      "meetingUrl": "https://teams.com",
+      "clientId": "5",
+      "status": "Open"
+    }
+  ],
+  "User": [
+    {
+      "id": "1",
+      "email": "admin@gmail.com",
+      "password": "admin123"
+    }
+  ]
+}

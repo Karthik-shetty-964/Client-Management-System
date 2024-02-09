@@ -1,0 +1,32 @@
+.editModal {
+    background-color: var(--secondary);
+    color:text(--text-primary);
+    max-width: 600px;
+}
+.modal-dialog{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.studId {
+    font-size: smaller;
+}
+.displayData {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    /* border: 2px solid gray; */
+    /* padding: 10px;*/
+}
+span.input-group-text{
+    width : 135px;
+    font-weight: bolder;
+    /* background-color: rgb(181, 226, 211); */
+}
+.card {
+    color : #151935;
+    background-color: var(--secondary);
+}
+.card-title {
+    font-weight: bolder;
+}

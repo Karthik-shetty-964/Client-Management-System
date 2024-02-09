@@ -1,0 +1,76 @@
+<div class="container row d-flex m-auto gap-4 justify-content-between">
+    <!-- Modal to add clients to the db -->
+    <div class="card p-0 mt-4">
+        <div class="card-header fs-4 fw-bolder d-flex clientHeader align-items-center justify-content-between">
+            <div class="d-flex gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi bi-person-circle"
+                    style="fill:gray" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                </svg>
+                <h2 (click)="getClientProfile(client.id)">{{client.name}}</h2>
+            </div>
+            <input type="button" class="btn btn-danger" value="Back"  (click)="goBack()"/>
+        </div>
+        <div class="card-body clientCards d-flex flex-column gap-3">
+            <div class="card p-0 flex-fill">
+                <div class="card-header fw-bolder fs-4" style="background-color:var(--third);">Projects</div>
+                <div class="card-body">
+                    <table class="table tableData table-hover text-center m-0">
+                        <thead class="p-4" style="--bs-table-bg:var(--secondary);">
+                            <tr>
+                                <th>Project Id</th>
+                                <th>Project Name</th>
+                                <th>Start Date</th>
+                                <th>Duration</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let project of projects">
+                                <td>{{project.id}}</td>
+                                <td>{{project.projectName}}</td>
+                                <td>{{project.startDate}}</td>
+                                <td>{{project.duration}} months</td>
+                                <td>
+                                    <input type="button" value=" View " (click)="getOneProject(project.id)" class="btn btn-info me-2" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card p-0 flex-fill">
+                <div class="card-header fw-bolder fs-5" style="background-color:var(--third);">Meetings</div>
+                <div class="card-body">
+                    <table class="table tableData table-hover text-center m-0">
+                        <thead class="p-4" style="--bs-table-bg:var(--secondary);">
+                            <tr>
+                                <th>Meeting Id</th>
+                                <th>Meeting Topic</th>
+                                <th>Timings</th>
+                                <th>Meeting URL</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let meeting of meetings">
+                                <td>{{meeting.id}}</td>
+                                <td>{{meeting.meetingTopic}}</td>
+                                <td>{{meeting.startDate}}</td>
+                                <td><a href="{{meeting.meetingUrl}}" target="_blank">{{meeting.meetingUrl}}</a></td>
+                                <td class="d-flex flex-column gap-2"><div>{{meeting.status}}</div><div class="p-2"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <span class="text-success fs-5 fw-bolder text-center" *ngIf="message!=''  ">{{message}}</span>
+    </div>
+
+
+</div>

@@ -1,0 +1,122 @@
+<div class="container row d-flex m-auto gap-4 justify-content-between">
+    <!-- Modal to add clients to the db -->
+    <div class="card p-2 mt-4 col-3" >
+        <div class="card-body">
+            <div class="text-center fw-bolder">
+                <h2>Add Client</h2>
+            </div>
+            <hr />
+            <form #loginForm="ngForm" (ngSubmit)="addClient(loginForm)">
+                <div class="mb-4">
+                    <label for="clientId" class="mb-1">Id:</label>
+                        <!-- <span class="studId text-secondary">(Id is auto generated)</span></label> -->
+                        <input type="number" id="clientId" [(ngModel)]="client.id" #clientId="ngModel" name="clientId"
+                            class="form-control" placeholder="Enter client Id " required/>
+                            <span class="error" *ngIf="clientId.invalid && clientId.touched">Client Id cannot
+                                be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="clientName" class="mb-1">Client Name:</label>
+                    <input type="text" id="clientName" [(ngModel)]="client.name" #clientName="ngModel" name="clientName"
+                        class="form-control" placeholder="Enter client name" required />
+                    <span class="error" *ngIf="clientName.invalid && clientName.touched">Client name cannot
+                        be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="location" class="mb-1">Location:</label>
+                    <input type="text" id="location" [(ngModel)]="client.location" #clientLocation="ngModel"
+                        name="clientLocation" class="form-control" placeholder="Enter client location"
+                        required />
+                    <span class="error" *ngIf="clientLocation.invalid && clientLocation.touched">Client
+                        location cannot be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="mb-1">Phone:</label>
+                    <input type="tel" id="phone" [(ngModel)]="client.phone" #clientPhone="ngModel" name="clientPhone"
+                        class="form-control" placeholder="Enter client phone number" pattern="[0-9]*$"
+                        minlength="10" required />
+                    <span class="error"
+                        *ngIf="clientPhone.invalid && clientPhone.touched && clientPhone.value===''">Client
+                        phone cannot be empty</span>
+                    <span class="error"
+                        *ngIf="clientPhone.invalid && clientPhone.touched && clientPhone.value!==''">Enter valid
+                        phone number</span>
+                </div>
+                <div class="mb-4">
+                    <label for="clientEmail" class="mb-1">Email:</label>
+                    <input type="email" id="clientEmail" [(ngModel)]="client.email" #clientEmail="ngModel"
+                        name="clientEmail" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        placeholder="Enter client email id" required />
+                    <span class="error"
+                        *ngIf="clientEmail.invalid && clientEmail.touched && clientEmail.value===''">Client
+                        email cannot be empty</span>
+                    <span class="error"
+                        *ngIf="clientEmail.invalid && clientEmail.touched && clientEmail.value!=='' ">Enter
+                        valid email id</span>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="mb-1">Password:</label>
+                    <input type="password" id="password" [(ngModel)]="client.password" #clientPassword="ngModel"
+                        name="clientPassword" class="form-control" minlength="8"
+                        placeholder="Enter client password" required />
+                    <span class="error"
+                        *ngIf="clientPassword.touched && clientPassword.invalid && clientPassword.value===''">Password
+                        cannot be empty</span>
+                    <span class="error"
+                        *ngIf="clientPassword.touched && clientPassword.invalid && clientPassword.value!==''">Password
+                        must have 8 characters</span>
+                </div>
+
+                <div class="d-flex gap-3 modal-footer">
+                    <input type="submit" value="Add Client" class="btn btn-success"
+                        [disabled]="loginForm.invalid" data-bs-dismiss="modal" />
+                    <input type="reset" value="Reset" class="btn btn-danger"  />
+                </div>
+            </form>
+            <span class="text-success d-flex justify-content-center fs-6 fw-bolder mt-2"
+                *ngIf="message!=''  ">{{message}}</span>
+        </div>
+    </div>
+
+    <div class="col-8 flex-fill mt-4 card p-0 clientDiv">
+        <div class="card-header fw-bolder text-center fs-4 fw-bolder text-dark">
+            All Clients
+        </div>
+        <div class="card-body clientCards" >
+            <div class="card singleCard" *ngFor="let client of allClients" style="width:31%;">
+                <div class="card-body d-flex gap-2 justify-content-between align-items-center" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi bi-person-circle" style="fill:gray" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                      </svg>
+                    <span class=" fs-3">{{client.name}}</span>
+                </div>
+                <hr class="p-0 mx-2 my-0"/>
+                <div class="d-flex justify-content-between mx-3 align-items-end py-2 text-left">
+                    <p class="text-secondary m-0">Id</p>
+                    <p class="m-0">{{client.id}}</p>
+                </div>
+                <hr class="p-0 mx-2 my-0"/>
+                <div class="d-flex justify-content-between mx-3 align-items-center py-2">
+                    <p class=" text-secondary m-0">Name</p>
+                    <p class="m-0">{{client.name}}</p>
+                </div>
+                <hr class="p-0 mx-2 my-0"/>
+                <div class="d-flex justify-content-between mx-3 align-items-center py-2">
+                    <p class=" text-secondary text-left m-0">Location</p>
+                    <p class="m-0">{{client.location}}</p>
+                </div>
+                <hr class="p-0 mx-2 my-0"/>
+                <div class="d-flex justify-content-between mx-3 align-items-center py-2">
+                    <p class=" text-secondary  m-0">Phone</p>
+                    <p class="m-0">{{client.phone}}</p>
+                </div>
+
+                <div class="d-flex flex-column justify-content-center align-items-center gap-4 hoverBtns">                   
+                    <input type="button" value=" View " (click)="getOneClient(client.id)" class="btn btn-info me-2" style="width: 100px;"/>
+                    <input type="button" value="Delete" (click)="deleteClient(client.id)" class="btn btn-danger text-dark" style="width: 100px;" />
+                </div>
+            </div>          
+        </div>
+    </div>
+</div>  

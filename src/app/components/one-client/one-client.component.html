@@ -1,0 +1,148 @@
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card col-8 mb-3 p-3">
+        <div class="row g-0">
+            <div class="col-md-4 d-flex flex-column  gap-3 align-items-center justify-content-center">
+                <img src="../../../assets/images.png" class="img-fluid rounded-start" alt="...">
+                <input type="button" value="Show client projects" class="btn btn-primary" (click)="getClientProjects(client.id)"/>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title d-flex align-items-center justify-content-between">
+                        <h1>
+                            {{client.name}}
+                        </h1>
+                        <!-- Button trigger modal -->
+                        <div class="btns d-flex gap-2">
+                            <button type="button" class="btn btn-info px-4 py-2 fw-bolder" data-bs-toggle="modal"
+                                data-bs-target="#editClientModal">
+                                Edit
+                            </button>
+                            <input type="button" (click)="goBack()" class="btn btn-danger" *ngIf="!isClientLoggedIn"
+                                value="Back" />
+                            <input type="button" (click)="logout()" class="btn btn-danger" *ngIf="isClientLoggedIn"
+                                value="Logout" />
+                        </div>
+                    </h5>
+                    <hr />
+                    <div class="displayData">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Client Id</span>
+                            <input type="text" class="form-control" value="{{client.id}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Client Name</span>
+                            <input type="text" class="form-control" value="{{client.name}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Location</span>
+                            <input type="text" class="form-control" value="{{client.location}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Phone</span>
+                            <input type="text" class="form-control" value="{{client.phone}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Email</span>
+                            <input type="text" class="form-control" value="{{client.email}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Password</span>
+                            <input type="text" class="form-control" value="{{client.password}}" aria-label="Username"
+                                aria-describedby="addon-wrapping" disabled>
+                        </div>
+                    </div>
+
+
+                    <span class="text-success d-flex justify-content-center fs-5 fw-bolder mt-3"
+                        *ngIf="message!=''  ">{{message}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal to Edit the user content -->
+    <div class="modal fade" id="editClientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content editModal">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data</h1>
+                    <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form #loginForm="ngForm" (ngSubmit)="editClientData()">
+                        <div class="mb-4">
+                            <label for="clientId" class="mb-1">Id:</label>
+                            <!-- <span class="studId text-secondary">(Id is auto generated)</span></label> -->
+                            <input type="number" id="clientId" [(ngModel)]="client.id" #clientId="ngModel"
+                                name="clientId" class="form-control" placeholder="Enter client Id " disabled />
+                        </div>
+                        <div class="mb-4">
+                            <label for="clientName" class="mb-1">Client Name:</label>
+                            <input type="text" id="clientName" [(ngModel)]="client.name" #clientName="ngModel"
+                                name="clientName" class="form-control" placeholder="Enter client name" required />
+                            <span class="error" *ngIf="clientName.invalid && clientName.touched">Client name cannot
+                                be empty</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="location" class="mb-1">Location:</label>
+                            <input type="text" id="location" [(ngModel)]="client.location" #clientLocation="ngModel"
+                                name="clientLocation" class="form-control" placeholder="Enter client location"
+                                required />
+                            <span class="error" *ngIf="clientLocation.invalid && clientLocation.touched">Client
+                                location cannot be empty</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="phone" class="mb-1">Phone:</label>
+                            <input type="tel" id="phone" [(ngModel)]="client.phone" #clientPhone="ngModel"
+                                name="clientPhone" class="form-control" placeholder="Enter client phone number"
+                                pattern="[0-9]*$" minlength="10" required />
+                            <span class="error"
+                                *ngIf="clientPhone.invalid && clientPhone.touched && clientPhone.value===''">Client
+                                phone cannot be empty</span>
+                            <span class="error"
+                                *ngIf="clientPhone.invalid && clientPhone.touched && clientPhone.value!==''">Enter valid
+                                phone number</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="clientEmail" class="mb-1">Email:</label>
+                            <input type="email" id="clientEmail" [(ngModel)]="client.email" #clientEmail="ngModel"
+                                name="clientEmail" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                placeholder="Enter client email id" required />
+                            <span class="error"
+                                *ngIf="clientEmail.invalid && clientEmail.touched && clientEmail.value===''">Client
+                                email cannot be empty</span>
+                            <span class="error"
+                                *ngIf="clientEmail.invalid && clientEmail.touched && clientEmail.value!=='' ">Enter
+                                valid email id</span>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="mb-1">Password:</label>
+                            <input type="password" id="password" [(ngModel)]="client.password" #clientPassword="ngModel"
+                                name="clientPassword" class="form-control" minlength="8"
+                                placeholder="Enter client password" required />
+                            <span class="error"
+                                *ngIf="clientPassword.touched && clientPassword.invalid && clientPassword.value===''">Password
+                                cannot be empty</span>
+                            <span class="error"
+                                *ngIf="clientPassword.touched && clientPassword.invalid && clientPassword.value!==''">Password
+                                must have 8 characters</span>
+                        </div>
+
+                        <div class="d-flex gap-3 modal-footer">
+                            <input type="submit" value="Save changes" class="btn btn-success"
+                                [disabled]="loginForm.invalid" data-bs-dismiss="modal" />
+                            <input type="button" value="Close" class="btn btn-danger" data-bs-dismiss="modal"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

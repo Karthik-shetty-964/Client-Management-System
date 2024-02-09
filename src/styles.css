@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap');
+
+:root {
+    --primary : #F5EEE6;
+    --secondary : #FFF8E3;
+    --third : #F3D7CA;
+    --text-primary : #151935;
+    --text-secondary : #E6A4B4;
+}
+
+body {
+    background: var(--primary);
+    font-family: 'Open Sans', sans-serif;
+    color : var(--text-primary);
+}
+
+input.ng-touched.ng-valid {
+    border : 2px solid green;
+}
+
+input.ng-touched.ng-invalid {
+    border : 2px solid red;
+}
+
+.error {
+    color : red;
+    font-weight: bold;
+}

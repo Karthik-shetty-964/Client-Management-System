@@ -1,0 +1,102 @@
+<div class="container d-flex flex-column justify-content-between m-auto">
+    <div class="d-flex gap-4">
+        <div class="flex-fill mt-4 p-0">
+            <div class="card" (click)="getClientsPage()">
+                <div class="d-flex justify-content-center align-items-center mt-3 fw-bolder p-2">
+                    <h2>Top Clients</h2>
+                </div>
+                <hr class="m-0" />
+
+                <div class="card-body p-0">
+                    <table class="table table-hover text-center m-0">
+                        <thead class="py-2 fs-6 ">
+                            <tr>
+                                <th>Client Id</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let client of allClients | slice:0:4">
+                            <tr>
+                                <td>{{client.id}}</td>
+                                <td>{{client.name}}</td>
+                                <td>{{client.location}}</td>
+                                <td>{{client.phone}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-fill mt-4 p-0">
+            <div class="card" (click)="getProjectsPage()">
+                <div class="d-flex justify-content-center align-items-center mt-3 fw-bolder p-2">
+                    <h2>Projects</h2>
+                </div>
+                <hr class="m-0" />
+
+                <div class="card-body p-0">
+                    <table class="table table-hover text-center m-0">
+                        <thead class="py-2 fs-6">
+                            <tr>
+                                <th>Project Id</th>
+                                <th>Project Name</th>
+                                <th>Client Id</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let project of allProjects | slice:0:3">
+                            <tr>
+                                <td>{{project.id}}</td>
+                                <td>{{project.projectName}}</td>
+                                <td>{{project.clientId}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="flex-fill mt-4 p-0">
+            <div class="card" (click)="getMeetingsPage()">
+                <div class="d-flex justify-content-center align-items-center mt-3 fw-bolder p-2">
+                    <h2>Client Meetings</h2>
+                </div>
+                <hr class="m-0" />
+
+                <div class="card-body p-0">
+                    <table class="table  table-hover text-center m-0">
+                        <thead class="py-2 fs-6  ">
+                            <tr>
+                                <th>Meeting Id</th>
+                                <th>Meeting Title</th>
+                                <th>Start Date</th>
+                                <th>Meeting URL</th>
+                                <th>Client Id</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let meeting of allMeetings | slice:0:2">
+                            <tr>
+                                <td>{{meeting.id}}</td>
+                                <td>{{meeting.meetingTopic}}</td>
+                                <td>{{meeting.startDate}}</td>
+                                <td><a href="{{meeting.meetingUrl}}">{{meeting.meetingUrl}}</a></td>
+                                <td>{{meeting.clientId}}</td>
+                                <td>{{meeting.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- <span class="text-success d-flex justify-content-center fs-5 fw-bolder"
+                *ngIf="message!=''  ">{{message}}</span> -->
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

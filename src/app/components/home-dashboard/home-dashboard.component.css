@@ -1,0 +1,23 @@
+.card {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    -webkit-box-shadow: 5px 6px 17px -3px rgba(112,112,112,1);
+    -moz-box-shadow: 5px 6px 17px -3px rgba(112,112,112,1);
+    box-shadow: 5px 6px 17px -3px rgba(112,112,112,1);
+    transform: scale(1);
+    transition: all ease-in-out 0.3s;
+}
+.table {  
+    --bs-table-bg: var(--secondary);
+}
+.card{
+    background-color: var(--third);
+}
+.card:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: var(--text-secondary);
+}
+.table>:not(caption)>*>* {
+    padding: 1.3rem 0.5rem;
+}

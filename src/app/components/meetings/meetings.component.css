@@ -1,0 +1,33 @@
+.card, .tableData{
+    background-color: var(--secondary);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+-moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+}
+.clientCards{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap : 30px 30px;
+    height: auto;
+    max-height: 650px;
+    overflow-y: auto ;
+}
+.card-header {
+    background-color: var(--third);
+}
+.clientDiv{
+    height: fit-content;   
+}
+.addModal {
+    background-color:var(--secondary);
+    color:var(--text-primary);
+    max-width: 600px;
+}
+.modal-dialog{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+

@@ -1,0 +1,183 @@
+<div class="container row d-flex m-auto gap-4 justify-content-between">
+    <!-- Modal to add clients to the db -->
+        <div class="col-8 flex-fill mt-4 card p-0 clientDiv">
+        <div class="card-header fw-bolder text-center fs-4 fw-bolder text-dark">
+            All Meetings
+        </div>
+        <div class="card-body clientCards" >
+            <table class="table tableData table-hover text-center m-0">
+                <thead class="p-4" style="--bs-table-bg:var(--third);">
+                    <tr >
+                        <th>Meeting Id</th>
+                        <th>Meeting Topic</th>
+                        <th>Timings</th>
+                        <th>Meeting URL</th>
+                        <th>Client Id</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let meeting of meetings" >
+                        <td>{{meeting.id}}</td>
+                        <td>{{meeting.meetingTopic}}</td>
+                        <td>{{meeting.startDate}}</td>
+                        <td><a href="{{meeting.meetingUrl}}" target="_blank">{{meeting.meetingUrl}}</a></td>
+                        <td>{{meeting.clientId}}</td>
+                        <td>{{meeting.status}}</td>
+                        <td class="d-flex flex-column gap-2 align-items-center">
+                            <input type="button" value=" Edit " 
+                                class="btn btn-info me-2" (click)="getOneMeeting(meeting.id)" data-bs-toggle="modal" data-bs-target="#editMeetingModal"/> 
+                            <input type="button" value="Delete" (click)="deleteMeeting(meeting.id)"
+                                class="btn btn-danger" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <span class="text-success fs-5 fw-bolder text-center"
+                *ngIf="message!=''  ">{{message}}</span>
+    </div>
+
+    <div class="card p-2 mt-4 col-3" >
+        <div class="card-body">
+            <div class="text-center fw-bolder">
+                <h2>Create Meeting</h2>
+            </div>
+            <hr />
+            <form #loginForm="ngForm" (ngSubmit)="addMeeting(loginForm)">
+                <div class="mb-4">
+                    <label for="meetingId" class="mb-1">Meeting Id:</label>
+                        <!-- <span class="studId text-secondary">(Id is auto generated)</span></label> -->
+                        <input type="number" id="meetingId" [(ngModel)]="meeting.id" #meetingId="ngModel" name="meetingId"
+                            class="form-control" placeholder="Enter meeting Id " required/>
+                            <span class="error" *ngIf="meetingId.invalid && meetingId.touched">Meeting Id cannot
+                                be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="meetingTopic" class="mb-1">Meeting Topic:</label>
+                    <input type="text" id="meetingTopic" [(ngModel)]="meeting.meetingTopic" #meetingTopic="ngModel" name="meetingTopic"
+                        class="form-control" placeholder="Enter meeting topic" required />
+                    <span class="error" *ngIf="meetingTopic.invalid && meetingTopic.touched">Meeting topic cannot
+                        be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="startDate" class="mb-1">Time:</label>
+                    <input type="datetime-local" id="startDate" [(ngModel)]="meeting.startDate"
+                        #time="ngModel" name="startDate" class="form-control" required />
+                    <span class="error" *ngIf="time.invalid && time.touched">Timings cannot
+                        be
+                        empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="url" class="mb-1">Meeting URL:</label>
+                    <input type="text" id="url" [(ngModel)]="meeting.meetingUrl" #url="ngModel" name="url"
+                        class="form-control" placeholder="Enter meeting URL" required />
+                    <span class="error" *ngIf="url.invalid && url.touched">Meeting URL cannot
+                        be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="clientId" class="mb-1">Client Id:</label>
+                    <select id="clientId" class="form-control" name="clientId"
+                        [(ngModel)]="meeting.clientId" #pClientId="ngModel" required>
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="{{client.id}}" *ngFor="let client of clients">{{client.id}}</option>
+                    </select>
+                    <span class="error" *ngIf="pClientId.invalid && pClientId.touched">Client Id cannot
+                        be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="status" class="mb-1">Meeting Status:</label>
+                    <select id="status" class="form-control" name="status"
+                        [(ngModel)]="meeting.status" #meetStatus="ngModel" required>
+                        <option value="" selected >Select an option</option>
+                        <option value="Open" >Open</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                    <span class="error" *ngIf="meetStatus.invalid && meetStatus.touched">Meeting status cannot be empty</span>
+                </div>
+                <div class="d-flex gap-3 modal-footer">
+                    <input type="submit" value="Create Meeting" class="btn btn-success"
+                        [disabled]="loginForm.invalid" data-bs-dismiss="modal" />
+                    <input type="reset" value="Reset" class="btn btn-danger"  />
+                </div>
+            </form>
+            <span class="text-success d-flex justify-content-center fs-6 fw-bolder mt-2"
+                *ngIf="message!=''  ">{{message}}</span>
+        </div>
+    </div>
+</div>  
+
+
+
+ <!-- Modal to edit the meeting content -->
+ <div class="modal fade" id="editMeetingModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog">
+     <div class="modal-content addModal">
+         <div class="modal-header">
+             <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Meeting</h1>
+             <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
+                 aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <form #loginForm="ngForm" (ngSubmit)="editMeeting(modal.id)">
+                <div class="mb-4">
+                    <label for="meetingId" class="mb-1">Meeting Id:</label>
+                        <!-- <span class="studId text-secondary">(Id is auto generated)</span></label> -->
+                        <input type="number" id="meetingId" [(ngModel)]="modal.id" #meetingId="ngModel" name="meetingId"
+                            class="form-control" placeholder="Enter meeting Id " required/>
+                            <span class="error" *ngIf="meetingId.invalid && meetingId.touched">Meeting Id cannot
+                                be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="meetingTopic" class="mb-1">Meeting Topic:</label>
+                    <input type="text" id="meetingTopic" [(ngModel)]="modal.meetingTopic" #meetingTopic="ngModel" name="meetingTopic"
+                        class="form-control" placeholder="Enter meeting topic" required />
+                    <span class="error" *ngIf="meetingTopic.invalid && meetingTopic.touched">Meeting topic cannot
+                        be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="startDate" class="mb-1">Time:</label>
+                    <input type="datetime" id="startDate" [(ngModel)]="modal.startDate"
+                        #time="ngModel" name="startDate" class="form-control" required />
+                    <span class="error" *ngIf="time.invalid && time.touched">Timings cannot
+                        be
+                        empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="url" class="mb-1">Meeting URL:</label>
+                    <input type="text" id="url" [(ngModel)]="modal.meetingUrl" #url="ngModel" name="url"
+                        class="form-control" placeholder="Enter meeting URL" required />
+                    <span class="error" *ngIf="url.invalid && url.touched">Meeting URL cannot
+                        be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="clientId" class="mb-1">Client Id:</label>
+                    <select id="clientId" class="form-control" name="clientId"
+                        [(ngModel)]="modal.clientId" #pClientId="ngModel" required>
+                        <option value="" selected disabled>Select an option</option>
+                        <option value="{{client.id}}" *ngFor="let client of clients">{{client.id}}</option>
+                    </select>
+                    <span class="error" *ngIf="pClientId.invalid && pClientId.touched">Client Id cannot
+                        be empty</span>
+                </div>
+                <div class="mb-4">
+                    <label for="status" class="mb-1">Meeting Status:</label>
+                    <select id="status" class="form-control" name="status"
+                        [(ngModel)]="modal.status" #meetStatus="ngModel" required>
+                        <option value="" selected >Select an option</option>
+                        <option value="Open" >Open</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                    <span class="error" *ngIf="meetStatus.invalid && meetStatus.touched">Meeting status cannot be empty</span>
+                </div>
+                <div class="d-flex gap-3 modal-footer">
+                    <input type="submit" value="Edit Meeting" class="btn btn-info" 
+                         data-bs-dismiss="modal" />
+                    <input type="button" value="Close" class="btn btn-danger"  data-bs-dismiss="modal"/>
+                </div>
+            </form>
+         </div>
+     </div>
+ </div>

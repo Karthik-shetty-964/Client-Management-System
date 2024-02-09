@@ -1,0 +1,50 @@
+.singleCard{
+    background-color: var(--secondary);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+-moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+}
+.containerCard {
+    background-color: var(--secondary);
+    -webkit-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.75);
+box-shadow: inset 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+.projectTasks {
+    background-color: var(--secondary);
+    -webkit-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+-moz-box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+box-shadow: 8px 8px 5px -6px rgba(0,0,0,0.46);
+}
+.pName {
+    background-color: var(--third);
+}
+.singleCard{
+    transform: scale(1);
+    transition: all ease-in-out 0.2s;
+}
+.singleCard:hover {
+    transform:scale(1.05);
+}
+.addBtn {
+    background-color: #151935;
+    color : white;
+}
+.addModal {
+    background-color:var(--secondary);
+    color:var(--text-primary);
+    max-width: 600px;
+}
+.modal-dialog{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.taskBody {
+    max-height: 400px;
+    overflow: auto;
+}
+.client {
+    
+    cursor: pointer;
+}
