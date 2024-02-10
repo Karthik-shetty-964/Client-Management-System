@@ -1,6 +1,10 @@
 # Client Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+## Versions Requirements
+Angular CLI: 16.2.12
+Node: 18.19.0
+Package Manager: npm 10.4.0
+OS: win32 x64
 
 ## To install this project in your pc
 Note : Make sure that you have angular cli installed in your system to use this application
