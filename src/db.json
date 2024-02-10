@@ -110,13 +110,6 @@
       "projectId": "1"
     },
     {
-      "id": "2",
-      "taskName": "Dashboard",
-      "taskDescription": "Show different options to user like account details, passbook history check option etc",
-      "status": "In Progress",
-      "projectId": "1"
-    },
-    {
       "id": "3",
       "taskName": "UPI key ",
       "taskDescription": "Should be able to make payment through UPI key",
@@ -138,13 +131,6 @@
       "projectId": "2"
     },
     {
-      "id": "2",
-      "taskName": "Home page",
-      "taskDescription": "Should be able to book train tickets through the portal 24/7",
-      "status": "Todo",
-      "projectId": "2"
-    },
-    {
       "id": "3",
       "taskName": "Ticket cancellation",
       "taskDescription": "Should be able to cancel booked tickets but the charges must be deducted",
@@ -155,13 +141,6 @@
       "id": "1",
       "taskName": "Login module",
       "taskDescription": "Proper authentication system to verify user and provide access to the portal",
-      "status": "Todo",
-      "projectId": "3"
-    },
-    {
-      "id": "2",
-      "taskName": "Ticket tracking",
-      "taskDescription": "Should be able to track tickets through the website",
       "status": "Todo",
       "projectId": "3"
     },
@@ -185,6 +164,13 @@
       "taskDescription": "Showcase all works and expereince of the individual",
       "status": "Todo",
       "projectId": "6"
+    },
+    {
+      "id": "2",
+      "taskName": "Ticket tracking",
+      "taskDescription": "Should be able to track tickets through the website",
+      "status": "Todo",
+      "projectId": "4"
     }
   ],
   "Client_Meetings": [

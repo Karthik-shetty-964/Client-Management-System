@@ -91,7 +91,7 @@
                                 <td>{{pTask.taskDescription}}</td>
                                 <td>{{pTask.status}}</td>
                                 <td class="d-flex flex-column gap-2">
-                                    <input type="button" value=" Edit " (click)="getOneTask(pTask.id)" data-bs-toggle="modal" data-bs-target="#addTaskModal" class="btn btn-info me-2" />
+                                    <input type="button" value=" Edit " (click)="getOneTask(pTask.id, pTask.projectId)" data-bs-toggle="modal" data-bs-target="#addTaskModal" class="btn btn-info me-2" />
                                     <input type="button" value="Delete" (click)="deleteTask(pTask.id)"
                                         class="btn btn-danger" />
                                 </td>

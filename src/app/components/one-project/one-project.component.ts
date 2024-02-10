@@ -48,6 +48,7 @@ export class OneProjectComponent implements OnInit {
         this.client = clientData;
       })
     })
+
   }
 
   // Method to add project task
@@ -64,11 +65,16 @@ export class OneProjectComponent implements OnInit {
   }
   
   // Method to fetch single task
-  getOneTask(id:any) {
-    id = id.toString();
+  getOneTask(tId:any, pId:any) {
+    tId = tId.toString();
+    pId = pId.toString();
     this.isEdit = true;
-    this.taskService.getOneProjectTask(id).subscribe((data) => {
-      this.task = data;
+    this.taskService.getAllProjectTasks().subscribe((tasksData) => {
+      for(let task of tasksData) {
+        if(task.id == tId && task.projectId == pId) {
+          this.task = task;
+        }
+      }
     })
   }
   
