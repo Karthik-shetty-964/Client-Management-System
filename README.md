@@ -1,10 +1,10 @@
 # Client Management System
 
 ## Versions Requirements
-Angular CLI: 16.2.12
-Node: 18.19.0
-Package Manager: npm 10.4.0
-OS: win32 x64
+1. Angular CLI: 16.2.12
+2. Node: 18.19.0
+3. Node Package Manager: npm 10.4.0
+4. OS: win32 x64
 
 ## To install this project in your pc
 Note : Make sure that you have angular cli installed in your system to use this application
